@@ -1,33 +1,33 @@
 // To parserequired this JSON data, do
 //
-//     final dogModel = dogModelFromJson(jsonString);
+//     final jokeModel = jokeModelFromJson(jsonString);
 
 import 'dart:convert';
 
-DogModel dogModelFromJson(String str) => DogModel.fromJson(json.decode(str));
+JokeModel jokeModelFromJson(String str) => JokeModel.fromJson(json.decode(str));
 
-String dogModelToJson(DogModel data) => json.encode(data.toJson());
+String jokeModelToJson(JokeModel data) => json.encode(data.toJson());
 
-class DogModel {
-    DogModel({
-       required this.categories,
-       required this.createdAt,
-       required this.iconUrl,
-       required this.id,
-       required this.updatedAt,
-       required this.url,
-       required this.value,
-    });
+class JokeModel {
+  JokeModel({
+    required this.categories,
+    required this.createdAt,
+    required this.iconUrl,
+    required this.id,
+    required this.updatedAt,
+    required this.url,
+    required this.value,
+  });
 
-    List<dynamic> categories;
-    DateTime createdAt;
-    String iconUrl;
-    String id;
-    DateTime updatedAt;
-    String url;
-    String value;
+  List<dynamic> categories;
+  DateTime createdAt;
+  String iconUrl;
+  String id;
+  DateTime updatedAt;
+  String url;
+  String value;
 
-    factory DogModel.fromJson(Map<String, dynamic> json) => DogModel(
+  factory JokeModel.fromJson(Map<String, dynamic> json) => JokeModel(
         categories: List<dynamic>.from(json["categories"].map((x) => x)),
         createdAt: DateTime.parse(json["created_at"]),
         iconUrl: json["icon_url"],
@@ -35,9 +35,9 @@ class DogModel {
         updatedAt: DateTime.parse(json["updated_at"]),
         url: json["url"],
         value: json["value"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "categories": List<dynamic>.from(categories.map((x) => x)),
         "created_at": createdAt.toIso8601String(),
         "icon_url": iconUrl,
@@ -45,5 +45,5 @@ class DogModel {
         "updated_at": updatedAt.toIso8601String(),
         "url": url,
         "value": value,
-    };
+      };
 }
