@@ -14,12 +14,15 @@ class JokeController extends GetxController {
 
   Future getJokes() async {
     try {
+      isLoading(true);
       var data = await RemoteService.fetchJokes();
       if (data != null) {
         joke.value = data;
       }
     } catch (e) {
       Get.snackbar("Message", e.toString());
+    } finally {
+      isLoading(false);
     }
   }
 
